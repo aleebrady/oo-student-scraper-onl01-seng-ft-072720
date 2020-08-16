@@ -25,15 +25,15 @@ class Scraper
     
     links = page.css(".social-icon-container").css('a').collect {|e| e.attributes["href"].value}
 
-    links.detect do |link|
+    links.each do |link|
 
-      hash[:twitter] = link if link.include?("twitter")
-      hash[:linkedin] = link if link.include?("linkedin")
-      hash[:github] = link if link.include?("github")
+      hash[:twitter] = link if link.include?("twitter") # checks for twitter
+      hash[:linkedin] = link if link.include?("linkedin") #checks for linkedin
+      hash[:github] = link if link.include?("github") # checks for github
 
     end
 
-    hash[:blog] = links[3] if links[3] != nil
+    hash[:blog] = links[3] if links[3] != nil # returns
     hash[:profile_quote] = page.css(".profile-quote")[0].text
     hash[:bio] = page.css(".description-holder").css('p')[0].text
     hash
