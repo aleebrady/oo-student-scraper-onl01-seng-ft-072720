@@ -8,14 +8,14 @@ class Scraper
     array = [] # create empty array 
     doc = Nokogiri::HTML(open(index_url)) # uses nokogiri to parse he html, open-uri opens the url
     
-    doc.css(".student-card").each do |student|
-      array << {
-        :name => student.css("h4.student-name").text,
+    doc.css(".student-card").each do |student| # iterates through each student gets data
+      array << { # shovels data into empty array of hashes
+        :name => student.css("h4.student-name").text, #uses css to get the specific data 
         :location => student.css("p.student-location").text,
         :profile_url => student.children[1].attributes["href"].value
       }
     end
-      array
+      array # returns array of hashes with student data requested 
   end
 
   def self.scrape_profile_page(profile_url)
