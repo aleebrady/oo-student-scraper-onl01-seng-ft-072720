@@ -6,7 +6,7 @@ class Scraper
 
   def self.scrape_index_page(index_url)
     array = [] # create empty array 
-    doc = Nokogiri::HTML(open(index_url)) 
+    doc = Nokogiri::HTML(open(index_url)) # uses nokogiri to parse he html, open-uri opens the url
     
     doc.css(".student-card").each do |student|
       array << {
