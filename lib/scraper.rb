@@ -33,8 +33,8 @@ class Scraper
 
     end
 
-    hash[:blog] = links[3] if links[3] != nil # returns
-    hash[:profile_quote] = page.css(".profile-quote")[0].text
+    hash[:blog] = links[3] if links[3] != nil # returns blog in hash 
+    hash[:profile_quote] = page.css(".profile-quote")[0].text 
     hash[:bio] = page.css(".description-holder").css('p')[0].text
     hash
   end
